@@ -2,9 +2,10 @@
 # Build FlipIt.app (macOS) and optionally install to /Applications: ./build.sh [--install]
 set -euo pipefail
 cd "$(dirname "$0")"
+/bin/sh "$PWD/native_artifact_guard.sh" prepare "$PWD/build" >/dev/null
 OUT=build
 APP="$OUT/FlipIt.app"
-rm -rf "$OUT"; mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+rm -rf "$APP"; mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 
 swiftc -O -target arm64-apple-macos13.0 -o "$APP/Contents/MacOS/FlipIt" FlipIt.swift -framework AppKit -framework CoreText
 

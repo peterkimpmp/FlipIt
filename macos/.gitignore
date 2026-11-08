@@ -1,2 +1,8 @@
 build/
 build.log
+
+# Sillok NA16: generated physical trees and compatibility links
+.*.noindex/
+.*.artifact-guard.lock/
+build
+macos/build
